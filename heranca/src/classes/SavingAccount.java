@@ -7,7 +7,7 @@ public class SavingAccount extends Account {
         super();
     }
 
-    public SavingAccount(Integer number, String holder, Double balance, Double interestRate) {
+    public SavingAccount(Integer number, String holder, double balance, double interestRate) {
         super(number, holder, balance);
         this.interestRate = interestRate;
     }
@@ -18,6 +18,12 @@ public class SavingAccount extends Account {
 
     public void setInterestRate(Double interestRate) {
         this.interestRate = interestRate;
+    }
+
+    @Override
+    public void withDraw(double amount) {
+        //super.withDraw(amount); // chama o método da classe pai.
+        balance -= amount;
     }
 
     public void updateBalance(){

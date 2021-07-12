@@ -25,6 +25,11 @@ public class BusinessAccount extends Account {
             balance += amount - 10;
             deposit(amount);
         }
+    }
 
+    @Override
+    public void withDraw(double amount) {
+        super.withDraw(amount); // chama o método da classe pai.
+        balance -= 2;
     }
 }

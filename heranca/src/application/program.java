@@ -6,8 +6,20 @@ import classes.SavingAccount;
 
 public class program {
     public static void main(String[] args) {
-        Account acc = new Account(1001, "Pedro", 0.0);
+        Account acc = new Account(1001, "Pedro", 1000.0);
         BusinessAccount bacc = new BusinessAccount(1002, "Maria", 0.0, 500.0);
+
+        acc.withDraw(200);
+        System.out.println(acc.getBalance());
+
+        Account sv = new SavingAccount(3, "Leo", 1000.00, 1000.0);
+        sv.withDraw(200);
+        System.out.println(sv.getBalance());
+
+        Account bs = new BusinessAccount(3 , "Bob", 1000.00, 250.0 );
+        bs.withDraw(200);
+        System.out.println(bs.getBalance());
+
 
         // UPCASTING
         Account acc1 = bacc;

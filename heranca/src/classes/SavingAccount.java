@@ -21,7 +21,9 @@ public class SavingAccount extends Account {
     }
 
     @Override
-    public void withDraw(double amount) {
+    // final não permite que o método seja sobreposto.
+    // public final void withDraw(double amount) {
+    public final void withDraw(double amount) {
         //super.withDraw(amount); // chama o método da classe pai.
         balance -= amount;
     }

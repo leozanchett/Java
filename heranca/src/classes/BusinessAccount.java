@@ -8,10 +8,6 @@ public class BusinessAccount extends Account {
         this.loanLimit = loanLimit;
     }
 
-    public BusinessAccount(){
-        super();
-    }
-
     public Double getLoanLimit() {
         return loanLimit;
     }
@@ -20,8 +16,8 @@ public class BusinessAccount extends Account {
         this.loanLimit = loanLimit;
     }
 
-    public void loan(Double amount){
-        if(amount <= loanLimit){
+    public void loan(Double amount) {
+        if (amount <= loanLimit) {
             balance += amount - 10;
             deposit(amount);
         }

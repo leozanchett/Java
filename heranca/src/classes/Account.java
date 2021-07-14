@@ -1,6 +1,6 @@
 package classes;
 
-public class Account {
+public abstract class Account {
     private Integer number;
     private String holder;
     protected Double balance;
@@ -25,17 +25,19 @@ public class Account {
         return balance;
     }
 
-    public void withDraw(double amount){
+    public void withDraw(double amount) {
         this.balance -= amount + (amount * 0.10);
     }
 
-    public void deposit(double amount){
+    public void deposit(double amount) {
         this.balance += amount;
     }
 
-    public Account(){
+    public Account() {
 
-    };
+    }
+
+    ;
 
     public Account(Integer number, String holder, Double balance) {
         this.number = number;

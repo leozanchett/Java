@@ -3,7 +3,7 @@ package classes;
 public class SavingAccount extends Account {
     private Double interestRate;
 
-    public SavingAccount(){
+    public SavingAccount() {
         super();
     }
 
@@ -28,7 +28,7 @@ public class SavingAccount extends Account {
         balance -= amount;
     }
 
-    public void updateBalance(){
+    public void updateBalance() {
         balance += balance * interestRate;
     }
 }

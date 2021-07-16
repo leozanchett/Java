@@ -7,13 +7,13 @@ public class RentalService {
     private Double pricePerDay;
     private Double pricePerHour;
 
-    private BrazilTaxService taxService;
+    private TaxServices taxService;
 
     public RentalService(){
 
     };
 
-    public RentalService(Double pricePerDay, Double pricePerHour, BrazilTaxService taxService) {
+    public RentalService(Double pricePerDay, Double pricePerHour, TaxServices taxService) {
         this.pricePerDay = pricePerDay;
         this.pricePerHour = pricePerHour;
         this.taxService = taxService;
@@ -23,7 +23,7 @@ public class RentalService {
         long tempoInicialLocacao = carRental.getStart().getTime();
         long tempoFinalLocacao = carRental.getFinish().getTime();
         //int teste = carRental.getFinish().compareTo(carRental.getStart());
-        double hours = (double) (tempoInicialLocacao - tempoFinalLocacao) / 1000 / 60 / 60;
+        double hours = (double) (tempoFinalLocacao - tempoInicialLocacao) / 1000 / 60 / 60;
 
         double basicPayments;
         if(hours <= 12){

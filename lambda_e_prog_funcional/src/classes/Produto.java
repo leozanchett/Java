@@ -29,6 +29,14 @@ public class Produto {
         return p.getPreco() >= 100;
     }
 
+    public static void staticProdutoConsumer(Produto p){
+         p.setPreco(p.getPreco() * 1.1);
+    }
+
+    public void noNstaticProdutoConsumer(){
+        setPreco(preco * 1.1);
+    }
+
     public boolean noNstaticProdutoPredicate(){
         return preco >= 100;
     }

@@ -3,13 +3,16 @@ package com.company;
 import classes.Produto;
 import util.ProdutoConsumer;
 import util.ProdutoPredicate;
+import util.UpercaseName;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Main {
     public static int globalValue = 1;
@@ -25,8 +28,20 @@ public class Main {
         lista.add(new Produto("Tablet", 350.00));
         lista.add(new Produto("HD Case", 80.90));
 
+        //FunctionsLAMBDA(lista);
         //Predicattesss(lista);
         //Consummerr(lista);
+    }
+
+    private static void FunctionsLAMBDA(List<Produto> lista) {
+        Function<Produto, String> aFunctionLAMBDA = produto -> produto.getNome().toUpperCase();
+        //List<String> listaProdEmUpperCase = lista.stream().map(new UpercaseName()).collect(Collectors.toList());
+        //List<String> listaProdEmUpperCase = lista.stream().map(Produto::staticUpperCaseName).collect(Collectors.toList());
+        //List<String> listaProdEmUpperCase = lista.stream().map(Produto::nonStaticUpperCaseName).collect(Collectors.toList());
+        //List<String> listaProdEmUpperCase = lista.stream().map(aFunctionLAMBDA).collect(Collectors.toList());
+        List<String> listaProdEmUpperCase = lista.stream().map(produto -> produto.getNome().toUpperCase()).collect(Collectors.toList());
+
+        listaProdEmUpperCase.forEach(System.out::println);
     }
 
     private static void Consummerr(List<Produto> lista) {

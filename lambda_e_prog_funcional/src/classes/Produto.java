@@ -29,6 +29,14 @@ public class Produto {
         return p.getPreco() >= 100;
     }
 
+    public static String staticUpperCaseName(Produto p){
+        return p.getNome().toUpperCase();
+    }
+
+    public String nonStaticUpperCaseName(){
+        return getNome().toUpperCase();
+    }
+
     public static void staticProdutoConsumer(Produto p){
          p.setPreco(p.getPreco() * 1.1);
     }

@@ -1,6 +1,7 @@
 package com.company;
 
 import classes.Produto;
+import service.ProductService;
 import util.ProdutoConsumer;
 import util.ProdutoPredicate;
 import util.UpercaseName;
@@ -27,6 +28,9 @@ public class Main {
         lista.add(new Produto("Mouse", 35.00));
         lista.add(new Produto("Tablet", 350.00));
         lista.add(new Produto("HD Case", 80.90));
+
+        ProductService ps = new ProductService();
+        System.out.println("Sum = "+String.format("%.2f", ps.filderedSum(lista, p -> p.getNome().charAt(0) == 'T')));
 
         //FunctionsLAMBDA(lista);
         //Predicattesss(lista);

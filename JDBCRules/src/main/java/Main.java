@@ -10,7 +10,36 @@ public class Main {
 
         //InsertValues(conn);
         //ConsultarDados(conn);
-        DeletarDados(conn);
+        //DeletarDados(conn);
+        Transacoes(conn);
+    }
+
+    private static void Transacoes(Connection conn){
+        Statement st = null;
+        try {
+            st = conn.createStatement();
+            conn.setAutoCommit(false);
+            int rows1 = st.executeUpdate("UPDATE seller set BaseSalary = 2000 "+
+                                                    "WHERE departmentId = 1");
+            int x = 1;
+            if(x < 2){
+                throw new SQLException("Fake error");
+            }
+            int rows2 = st.executeUpdate("UPDATE seller set BaseSalary = 3090 "+
+                                                     "WHERE departmentId = 2"
+                                                );
+            conn.commit();
+            System.out.println("rows1 affected "+rows1);
+            System.out.println("rows2 affected "+rows2);
+        } catch (SQLException e) {
+            try {
+                conn.rollback();
+                System.out.println("Transaction rolledback "+e.getMessage());
+            } catch (SQLException ex) {
+                throw new DBExceptions("Error trying to rollback "+ex.getMessage());
+            }
+            e.printStackTrace();
+        }
     }
 
     private static void DeletarDados(Connection conn){

@@ -1,5 +1,6 @@
 import db.DB;
 import db.DBExceptions;
+import db.DBIntegrityException;
 
 import java.sql.*;
 
@@ -7,8 +8,26 @@ public class Main {
     public static void main(String[] args) {
         Connection conn = DB.getConn();
 
-        InsertValues(conn);
-        ConsultarDados();
+        //InsertValues(conn);
+        //ConsultarDados(conn);
+        DeletarDados(conn);
+    }
+
+    private static void DeletarDados(Connection conn){
+        PreparedStatement ps = null;
+        try {
+            ps = conn.prepareStatement(
+                    "DELETE FROM department "+
+                        "where " +
+                        "Id = ?");
+            ps.setInt(1, 2);
+            int rowsaffected = ps.executeUpdate();
+            System.out.println("Rows afected "+ rowsaffected);
+        } catch (SQLException e) {
+            throw new DBIntegrityException(e.getMessage());
+        }
+
+
     }
 
     private static void InsertValues(Connection conn){
@@ -49,11 +68,10 @@ public class Main {
         }
     }
 
-    private static void ConsultarDados() {
+    private static void ConsultarDados(Connection conn) {
         Statement st = null;
         ResultSet rs = null;
         try {
-            Connection conn = DB.getConn();
             st = conn.createStatement();
             rs =  st.executeQuery("select * from department");
             while (rs.next()){

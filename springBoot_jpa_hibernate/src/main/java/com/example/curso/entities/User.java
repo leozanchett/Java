@@ -11,7 +11,7 @@ import javax.persistence.Id;
 @Entity
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -19,10 +19,10 @@ public class User implements Serializable {
 	private String email;
 	private String phone;
 	private String password;
-	
-	
+
+
 	public User() {
-	
+
 	}
 
 	public Long getId() {
@@ -72,8 +72,8 @@ public class User implements Serializable {
 		this.email = email;
 		this.phone = phone;
 		this.password = password;
-	}	
-	
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -83,9 +83,7 @@ public class User implements Serializable {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
+		if ((obj == null) || (getClass() != obj.getClass()))
 			return false;
 		User other = (User) obj;
 		return Objects.equals(id, other.id);
@@ -97,9 +95,9 @@ public class User implements Serializable {
 		return "User [id=" + id + ", name=" + name + ", email=" + email + ", phone=" + phone + ", password=" + password
 				+ "]";
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 }

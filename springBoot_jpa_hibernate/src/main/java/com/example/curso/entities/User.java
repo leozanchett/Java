@@ -23,7 +23,7 @@ public class User implements Serializable {
 	private String password;
 	@JsonIgnore
 	@OneToMany(mappedBy = "client")
-	private List<Order> orders = new ArrayList<>();
+	private final List<Order> orders = new ArrayList<>();
 
 	public User() {
 

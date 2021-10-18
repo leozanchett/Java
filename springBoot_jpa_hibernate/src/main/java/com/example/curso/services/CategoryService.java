@@ -1,9 +1,7 @@
 package com.example.curso.services;
 
 import com.example.curso.entities.Category;
-import com.example.curso.entities.User;
 import com.example.curso.repositories.CategoryRepository;
-import com.example.curso.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

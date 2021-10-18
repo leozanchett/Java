@@ -1,7 +1,5 @@
 package com.example.curso.entities.enums;
 
-import com.example.curso.entities.Order;
-
 public enum OrderStatus {
     WAITING_PAYMENT(1),
     PAID(2),

@@ -1,6 +1,4 @@
-import classes.JavaBeans;
-import classes.PadraoBuilder;
-import classes.TelescopingConstructor;
+import classes.*;
 
 public class main {
 
@@ -14,5 +12,8 @@ public class main {
         javaBeans.setServings(8);
         // ----------------------------------------
         PadraoBuilder padraoBuilder = new PadraoBuilder.Builder(240, 8).calories(100).sodium(35).carbohydrate(27).build();
+
+        NyPizza nyPizza = new NyPizza.Builder(NyPizza.Size.SMALL).addToping(Pizza.Topping.SAUSAGE).addToping(Pizza.Topping.ONION).build();
+        Calzone calzone = new Calzone.Builder().addToping(Pizza.Topping.HAM).sauceInside().build();
     }
 }

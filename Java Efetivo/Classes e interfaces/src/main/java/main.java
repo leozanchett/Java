@@ -15,10 +15,10 @@ public class main {
         Polymorphism myPig = new Pig();
         myPig.animalSound();
 
-        Complex complex1 = new Complex(2, 5);
+        Complex complex1 =  Complex.valueOf(2, 5);
         System.out.println(complex1.toString());
 
-        Complex complex2 = new Complex(2, 5);
+        Complex complex2 = Complex.valueOf(2, 5);
         System.out.println(complex2.toString());
 
         System.out.println(complex1.equals(complex2));

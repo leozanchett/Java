@@ -27,6 +27,9 @@ public class main {
         System.out.println(complex2.toString());
         System.out.println(complex1.equals(complex2));
 
+        Sub sub = new Sub();
+        // apresenta null na primeira vez porque o overrideMe é invocado pelo construtor da super antes do construtor da sub
+        sub.overrideMe();
     }
 
 }

@@ -16,12 +16,11 @@ import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.WebApplicationInitializer;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
@@ -55,5 +54,18 @@ public class TaskController {
         }catch (RuntimeException runtimeException){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Task not found ", runtimeException);
         }
+    }
+
+    @PostMapping(path = TaskURI.CREATE_TASK)
+    public ResponseEntity<?> createTask(@RequestBody TaskDto taskDto, Pageable pageable, PersistentEntityResourceAssembler resourceAssembler){
+        log.info("Task controller: " + taskDto);
+        Task events = taskService.saveTask(taskDto);
+        Link selfLink = WebMvcLinkBuilder.linkTo(methodOn(this.getClass()).createTask(taskDto, pageable, resourceAssembler)).withSelfRel();
+        Link allTasksLink = WebMvcLinkBuilder.linkTo(this.getClass()).slash("/tasks").withRel("all tasks");
+        EntityModel<Task> taskResource = EntityModel.of(events);
+        taskResource.add(selfLink, allTasksLink);
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("CustomResponseHeader", "CustomValue");
+        return new ResponseEntity<EntityModel<Task>>(taskResource, responseHeaders, HttpStatus.CREATED);
     }
 }

@@ -2,11 +2,12 @@ package com.stefanini.payroll;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.ribbon.RibbonClient;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
-//  Cliente ribbon, ele que vai chamar o outro projeto hr-worker
-@RibbonClient(name = "hr-worker")
+
+// O eureka já tem o balanceamento de carga, não sendo mais necessário utilizar o ribbon
+@EnableEurekaClient
 @EnableFeignClients
 @SpringBootApplication
 public class HrPayrollApplication {

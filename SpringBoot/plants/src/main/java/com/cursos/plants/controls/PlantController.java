@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -64,6 +66,15 @@ public class PlantController {
             return plantToDelete;
         } else {
             return null;
+        }
+    }
+
+    @GetMapping("/plants/search")
+    public List<Plant> searchPlants(@RequestParam(name = "hasFruit", required = false) Boolean hasFruit){
+        if(hasFruit != null && hasFruit){
+            return plantRepository.findByHasFruitTrue();
+        }else {
+            return new ArrayList<>();
         }
     }
 }

@@ -54,4 +54,16 @@ public class PlantController {
             return null;
         }
     }
+
+    @DeleteMapping("/plants/{id}")
+    public Plant deletePlant(@PathVariable("id") Integer id){
+        Optional<Plant> plantToDeleteOptional = plantRepository.findById(id);
+        if(plantToDeleteOptional.isPresent()){
+            Plant plantToDelete = plantToDeleteOptional.get();
+            plantRepository.delete(plantToDelete);
+            return plantToDelete;
+        } else {
+            return null;
+        }
+    }
 }

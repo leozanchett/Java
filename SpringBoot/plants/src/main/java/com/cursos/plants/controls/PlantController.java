@@ -70,11 +70,21 @@ public class PlantController {
     }
 
     @GetMapping("/plants/search")
-    public List<Plant> searchPlants(@RequestParam(name = "hasFruit", required = false) Boolean hasFruit){
-        if(hasFruit != null && hasFruit){
-            return plantRepository.findByHasFruitTrue();
-        }else {
+    public List<Plant> searchPlants(@RequestParam(name = "hasFruit", required = false) Boolean hasFruit,
+                                    @RequestParam(name = "maxQuantity", required = false) Integer quantity){
+        if ( (hasFruit != null && hasFruit) && (quantity != null) ){
+            return plantRepository.findByHasFruitTrueAndQuantityLessThan(quantity);
+        } else if ( (hasFruit != null && !hasFruit) && quantity != null) {
+            return plantRepository.findByHasFruitFalseAndQuantityLessThan(quantity);
+        } else if ( (hasFruit != null && hasFruit) && quantity == null ){
+            return  plantRepository.findByHasFruitTrue();
+        } else if ( (hasFruit != null && !hasFruit) && quantity == null ) {
+            return plantRepository.findByHasFruitFalse();
+        } else if ( hasFruit == null && quantity != null){
+            return plantRepository.findByQuantityLessThan(quantity);
+        } else {
             return new ArrayList<>();
         }
     }
+
 }

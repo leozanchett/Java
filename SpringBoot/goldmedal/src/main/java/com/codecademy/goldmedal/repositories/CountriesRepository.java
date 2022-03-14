@@ -1,5 +1,10 @@
 package com.codecademy.goldmedal.repositories;
 
-public interface CountriesRepository {
+import org.springframework.data.repository.CrudRepository;
 
+import com.codecademy.goldmedal.model.Country;
+
+public interface CountriesRepository extends CrudRepository<Country, Integer> {
+	
+	
 }

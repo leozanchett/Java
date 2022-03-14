@@ -1,11 +1,14 @@
 package com.codecademy.goldmedal.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.text.WordUtils;
 import org.springframework.web.bind.annotation.*;
 
 import com.codecademy.goldmedal.model.CountriesResponse;
 import com.codecademy.goldmedal.model.Country;
+import com.codecademy.goldmedal.model.CountryDetailsResponse;
 import com.codecademy.goldmedal.model.CountrySummary;
 
 @RestController
@@ -23,14 +26,14 @@ public class GoldMedalController {
         return new CountriesResponse(getCountrySummaries(sort_by.toLowerCase(), ascendingOrder));
     }
 
-    /*
-
+   
     @GetMapping("/{country}")
     public CountryDetailsResponse getCountryDetails(@PathVariable String country) {
         String countryName = WordUtils.capitalizeFully(country);
         return getCountryDetailsResponse(countryName);
     }
 
+    /*
     @GetMapping("/{country}/medals")
     public CountryMedalsListResponse getCountryMedalsList(@PathVariable String country, @RequestParam String sort_by, @RequestParam String ascending) {
         String countryName = WordUtils.capitalizeFully(country);
@@ -121,14 +124,14 @@ public class GoldMedalController {
                 break;
         }
 
-        return null;
         //var countrySummaries = getCountrySummariesWithMedalCount(countries);
 
-        /*if (sortBy.equalsIgnoreCase("medals")) {
-            countrySummaries = sortByMedalCount(countrySummaries, ascendingOrder);
+        if (sortBy.equalsIgnoreCase("medals")) {
+            //countrySummaries = sortByMedalCount(countrySummaries, ascendingOrder);
         }
 
-        return countrySummaries;*/
+        //return countrySummaries;
+        return null;
     }
 
     /*private List<CountrySummary> sortByMedalCount(List<CountrySummary> countrySummaries, boolean ascendingOrder) {
@@ -139,12 +142,12 @@ public class GoldMedalController {
                 .collect(Collectors.toList());
     } */
 
-    /*private List<CountrySummary> getCountrySummariesWithMedalCount(List<Country> countries) {
+    private List<CountrySummary> getCountrySummariesWithMedalCount(List<Country> countries) {
         List<CountrySummary> countrySummaries = new ArrayList<>();
         for (var country : countries) {
-            var goldMedalCount = // TODO: get count of medals for the given country
+            var goldMedalCount =  33;// TODO: get count of medals for the given country
             countrySummaries.add(new CountrySummary(country, goldMedalCount));
         }
         return countrySummaries;
-    }*/
+    }
 }

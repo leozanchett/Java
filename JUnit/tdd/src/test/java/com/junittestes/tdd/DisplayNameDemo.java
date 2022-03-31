@@ -1,7 +1,6 @@
 package com.junittestes.tdd;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.Test;
 
 public class DisplayNameDemo {

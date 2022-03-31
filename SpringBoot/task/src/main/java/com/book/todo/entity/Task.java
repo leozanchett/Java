@@ -1,22 +1,23 @@
 package com.book.todo.entity;
 
-import com.sun.istack.NotNull;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Data
+@Table(name = "task")
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Column
-    @NotNull
+    @NotNull(message = "Task name is required")
     private String name;
 
     @Column
-    @NotNull
+    @NotNull(message = "Task description is required")
     private String description;
 }

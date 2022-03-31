@@ -8,8 +8,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.ModelMap;
-
 import java.util.Optional;
 
 @Slf4j
@@ -27,7 +25,10 @@ public class TaskService {
 
     public Task getTask(long taskId){
         Optional<Task> task = taskRepository.findById(taskId);
-        return task.get();
+        if (task.isPresent()){
+            return task.get();
+        }
+        return null;
     }
 
     public Task saveTask(TaskDto taskDto){

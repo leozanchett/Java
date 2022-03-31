@@ -1,0 +1,58 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <?m2e ignore?>
+    <groupId>com.cedarsoft</groupId>
+    <artifactId>open</artifactId>
+    <version>39</version>
+  </parent>
+
+  <groupId>com.junittestes</groupId>
+  <artifactId>tdd</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+  <scm>
+    <connection>scm:git:git://git.cedarsoft.com/com.junittestes.tdd</connection>
+    <developerConnection>scm:git:ssh://git.cedarsoft.com/home/git/com.junittestes.tdd</developerConnection>
+  </scm>
+
+  <dependencies>
+    <!--Guava-->
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+    </dependency>
+
+    <!--NotNull Annotations-->
+    <dependency>
+      <groupId>com.google.code.findbugs</groupId>
+      <artifactId>jsr305</artifactId>
+    </dependency>
+
+    <!-- Log Dependencies -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.36</version>
+    </dependency>
+
+
+    <!--Test Dependencies-->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.8.2</version>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+  <mailingLists>
+    <mailingList>
+      <name>Mail Support</name>
+      <post>info@cedarsoft.com</post>
+    </mailingList>
+  </mailingLists>
+
+</project>

@@ -30,14 +30,6 @@
       <artifactId>jsr305</artifactId>
     </dependency>
 
-    <!-- Log Dependencies -->
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <version>1.7.36</version>
-    </dependency>
-
-
     <!--Test Dependencies-->
     <dependency>
       <groupId>org.junit.jupiter</groupId>

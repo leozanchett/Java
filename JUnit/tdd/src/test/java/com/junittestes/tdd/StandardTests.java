@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 class StandardTests {
    @BeforeAll
    static void initAll() {
+
    }
 
    @BeforeEach
@@ -24,8 +25,9 @@ class StandardTests {
    }
 
    @Test
+   @Disabled("for demonstration purposes")
    void failingTest() {
-      //fail("a failing test");
+      fail("a failing test");
    }
 
    @Test
@@ -42,10 +44,12 @@ class StandardTests {
 
    @AfterEach
    void tearDown() {
+      System.out.println("tearDown");
    }
 
    @AfterAll
    static void tearDownAll() {
+      System.out.println("tearDownAll");
    }
    
 }

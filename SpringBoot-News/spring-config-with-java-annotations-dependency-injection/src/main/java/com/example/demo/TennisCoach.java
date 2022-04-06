@@ -7,10 +7,11 @@ import org.springframework.stereotype.Component;
 @Component//("tennisCoach") // bean id = tennisCoach
 public class TennisCoach implements Coach {
 
-	private final FortuneService fortuneService;
+	private FortuneService fortuneService;
 
-	//@Autowired
+	@Autowired
 	public TennisCoach(FortuneService fortuneService) {
+		System.out.println(">> TennisCoach: inside default constructor");
 		this.fortuneService = fortuneService;
 	}
 
@@ -23,5 +24,17 @@ public class TennisCoach implements Coach {
 	public String getDailyFortune() {
 		return fortuneService.getFortune();
 	}
+
+	@Autowired
+	public void setFortuneService(FortuneService fortuneService) {
+		System.out.println(">> TennisCoach: inside setFortuneService() method");
+		this.fortuneService = fortuneService;
+	}
+
+	@Autowired
+	private void teste(){
+		System.out.println(">> TennisCoach: inside teste() method");
+	}
+
 
 }

@@ -1,4 +1,4 @@
-package src.main.java.com.example.demo;
+package com.example.demo;
 
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -12,7 +12,7 @@ public class AnnotationDemoApp {
 				new ClassPathXmlApplicationContext("applicationContext.xml");
 		
 		// get the bean from spring container
-		com.example.demo.Coach theCoach = context.getBean("thatSillyCoach", com.example.demo.Coach.class);
+		Coach theCoach = context.getBean("tennisCoach", Coach.class);
 		
 		// call a method on the beanO
 		System.out.println(theCoach.getDailyWorkout());

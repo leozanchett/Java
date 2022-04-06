@@ -1,5 +1,6 @@
 package src.main.java.com.example.demo;
 
+
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class AnnotationDemoApp {

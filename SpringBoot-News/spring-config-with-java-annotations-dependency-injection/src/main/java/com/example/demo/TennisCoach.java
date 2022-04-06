@@ -7,13 +7,8 @@ import org.springframework.stereotype.Component;
 @Component//("tennisCoach") // bean id = tennisCoach
 public class TennisCoach implements Coach {
 
-	private FortuneService fortuneService;
-
 	@Autowired
-	public TennisCoach(FortuneService fortuneService) {
-		System.out.println(">> TennisCoach: inside default constructor");
-		this.fortuneService = fortuneService;
-	}
+	private FortuneService fortuneService;
 
 	@Override
 	public String getDailyWorkout() {
@@ -23,12 +18,6 @@ public class TennisCoach implements Coach {
 	@Override
 	public String getDailyFortune() {
 		return fortuneService.getFortune();
-	}
-
-	@Autowired
-	public void setFortuneService(FortuneService fortuneService) {
-		System.out.println(">> TennisCoach: inside setFortuneService() method");
-		this.fortuneService = fortuneService;
 	}
 
 	@Autowired

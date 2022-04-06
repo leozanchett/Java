@@ -8,7 +8,7 @@ public class HelloSpringApp {
       ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
       // retrieve bean from sprint container
-      Coach theCoach = context.getBean("myCoach", Coach.class);
+      Coach theCoach = context.getBean("myCoach2", Coach.class);
 
       // call methos on the bean
       System.out.println(theCoach.getDailyWorkout());

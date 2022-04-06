@@ -16,13 +16,11 @@
     	</bean>
      -->
  	<bean id="myCoach"
- 		class="com.example.demo.Coach">	 		
+ 		class="com.example.demo.BaseballCoach">	 		
  	</bean>
 
-    <!--
-    <bean id="myCoach"
-        class="com.luv2code.springdemo.BaseballCoach">         
+    <bean id="myCoach2"
+        class="com.example.demo.TrackCoach">         
     </bean>
-    -->
 
 </beans>

@@ -3,9 +3,14 @@ package com.example.demo;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+
+
 public class AnnotationDemoApp {
 
+
+
 	public static void main(String[] args) {
+
 
 		// read spring config file
 		ClassPathXmlApplicationContext context =
@@ -19,7 +24,8 @@ public class AnnotationDemoApp {
 
 		// call method to get daily fortune
 		System.out.println(theCoach.getDailyFortune());
-				
+
+
 		// close the context
 		context.close();
 

@@ -2,10 +2,12 @@ package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-// if i not define a id, the default id is the class name with first letter in lowercase
-@Component//("tennisCoach") // bean id = tennisCoach
+@Component // bean id = tennisCoach
+//@Component("myCoach") // bean id = myCoach se não for definido um nome para o componente será o nome da classe com a primeira letra em lowercase
+@Scope("prototype") // bean scope = prototype significa que quero criar uma instancia diferente, toda vez que a classe for instanciada.
 public class TennisCoach implements Coach {
 
 	@Autowired

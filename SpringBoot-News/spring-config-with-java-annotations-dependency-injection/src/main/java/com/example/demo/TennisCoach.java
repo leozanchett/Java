@@ -5,10 +5,22 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 @Component // bean id = tennisCoach
 //@Component("myCoach") // bean id = myCoach se não for definido um nome para o componente será o nome da classe com a primeira letra em lowercase
-@Scope("prototype") // bean scope = prototype significa que quero criar uma instancia diferente, toda vez que a classe for instanciada.
+//@Scope("prototype") // bean scope = prototype significa que quero criar uma instancia diferente, toda vez que a classe for instanciada.
 public class TennisCoach implements Coach {
+
+	public TennisCoach(){
+		System.out.println(">> TennisCoach: inside default constructor");
+	}
+
+	@PostConstruct
+	public void doMyStartupStuff(){
+		System.out.println(">> TennisCoach: inside doMyStartupStuff");
+	}
 
 	@Autowired
 	@Qualifier("happyFortuneTwo") // quando há dois ou mais métodos iguais que sobreescrevem o método getFortune()
@@ -30,5 +42,9 @@ public class TennisCoach implements Coach {
 		System.out.println(">> TennisCoach: inside teste() method");
 	}
 
+	@PreDestroy
+	private void destroy(){
+		System.out.println(">> TennisCoach: inside destroy() method");
+	}
 
 }

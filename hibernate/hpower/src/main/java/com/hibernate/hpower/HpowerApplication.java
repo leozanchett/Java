@@ -1,26 +1,32 @@
 package com.hibernate.hpower;
 
-import com.hibernate.hpower.models.Employee;
-import com.hibernate.hpower.repository.EmployeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.hibernate.hpower.models.Employe;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 
 @SpringBootApplication
 public class HpowerApplication {
 
-	@Autowired
-	private EmployeRepository employeRepository;
 
-	public static void main(String[] args) {
-		SpringApplication.run(HpowerApplication.class, args);
-		System.out.println("EntityIdDemo");
-		Employee e1 = new Employee();
-		e1.setEmpId(1);
-		e1.setEmpName("Raj");
-		e1.setEmpAddress("Hyderabad");
-		employeRepository.save(e1);
-
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(HpowerApplication.class, args);
+        System.out.println("EntityIdDemo");
+        Employe e1 = new Employe();
+        e1.setEmpId(1);
+        e1.setEmpName("Raj");
+        e1.setEmpAddress("Hyderabad");
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        try {
+            session.save(e1);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
 }

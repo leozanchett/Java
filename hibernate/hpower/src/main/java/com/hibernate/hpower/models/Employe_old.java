@@ -13,7 +13,7 @@ public class Employe_old implements Serializable {
 
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date empDoj;
-    @Transient
+    @Transient // ignora esta propiedade na tabela
     private int empAge;
     @Embedded
     @AttributeOverride(name = "street", column = @Column(name = "OFFICE_STREET"))

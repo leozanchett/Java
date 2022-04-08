@@ -50,5 +50,14 @@ public class CollectionDemo {
         } finally {
             session.close();
         }
+        Employee temp = null;
+        session = sessionFactory.openSession();
+        session.beginTransaction();
+        temp = session.get(Employee.class, 1);
+        System.out.println("ID : " + temp.getEmpId());
+        System.out.println("Name : " + temp.getEmpName());
+        session.getTransaction().commit();
+        session.close();
+        System.out.println("List of Address : " + temp.getListOfAddress().size());
     }
 }

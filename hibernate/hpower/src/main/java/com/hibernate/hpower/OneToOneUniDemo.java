@@ -1,6 +1,6 @@
 package com.hibernate.hpower;
 
-import com.hibernate.hpower.models.Employee;
+import com.hibernate.hpower.models.Employee_one_to_one;
 import com.hibernate.hpower.models.Flat;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,21 +14,21 @@ public class OneToOneUniDemo {
         flat.setApartmentName("Anantdhara");
         flat.setNoOfBedrooms(3);
 
-        Employee employee = new Employee();
-        employee.setEmpId(1);
-        employee.setEmpName("Raj");
-        employee.setEmpAddress("Pune");
-        employee.setFlat(flat);
+        Employee_one_to_one employeeOnetoone = new Employee_one_to_one();
+        employeeOnetoone.setEmpId(1);
+        employeeOnetoone.setEmpName("Raj");
+        employeeOnetoone.setEmpAddress("Pune");
+        employeeOnetoone.setFlat(flat);
 
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         try {
-            session.save(employee);
+            session.save(employeeOnetoone);
             session.save(flat);
             session.getTransaction().commit();
-            Employee employeRequest;
-            employeRequest = session.get(Employee.class, 1);
+            Employee_one_to_one employeRequest;
+            employeRequest = session.get(Employee_one_to_one.class, 1);
             System.out.println(employeRequest.getFlat().toString());
         }catch (Exception e){
             e.printStackTrace();

@@ -1,7 +1,7 @@
 package com.hibernate.hpower;
 
 import com.hibernate.hpower.models.Address;
-import com.hibernate.hpower.models.Employee;
+import com.hibernate.hpower.models.Employee_withCollections;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -33,7 +33,7 @@ public class CollectionDemo {
         // instantiate a collection of addresses
         Collection<Address> addresses = Arrays.asList(address_1, address_2, address_3);
 
-        Employee employee = new Employee();
+        Employee_withCollections employee = new Employee_withCollections();
         employee.setEmpId(1);
         employee.setEmpName("John");
         employee.setListOfAddress(addresses);
@@ -50,10 +50,10 @@ public class CollectionDemo {
         } finally {
             session.close();
         }
-        Employee temp = null;
+        Employee_withCollections temp = null;
         session = sessionFactory.openSession();
         session.beginTransaction();
-        temp = session.get(Employee.class, 1);
+        temp = session.get(Employee_withCollections.class, 1);
         System.out.println("ID : " + temp.getEmpId());
         System.out.println("Name : " + temp.getEmpName());
         session.getTransaction().commit();

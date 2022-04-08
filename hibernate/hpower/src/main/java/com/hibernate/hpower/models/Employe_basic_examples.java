@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-public class Employe_old implements Serializable {
+public class Employe_basic_examples implements Serializable {
     @EmbeddedId
     private EmployeeId employeId;
     private String empName;

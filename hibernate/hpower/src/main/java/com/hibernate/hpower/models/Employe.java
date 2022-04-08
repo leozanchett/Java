@@ -1,26 +1,27 @@
 package com.hibernate.hpower.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Employe {
     @Id
-    private Long empId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int empId;
     @Column(name = "name")
     private String empName;
     @Column(name = "address")
     private String empAddress;
-
-    public long getEmpId() {
-        return empId;
-    }
-
-    public void setEmpId(long empId) {
-        this.empId = empId;
-    }
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date empDoj;
+    @Transient
+    private int empAge;
+    @Embedded
+    @AttributeOverride(name = "street", column = @Column(name = "OFFICE_STREET"))
+    @AttributeOverride(name = "city", column = @Column(name = "OFFICE_CITY"))
+    @AttributeOverride(name = "state", column = @Column(name = "OFFICE_STATE"))
+    @AttributeOverride(name = "pin", column = @Column(name = "OFFICE_PIN"))
+    private Address empAddressObj;
 
     public String getEmpName() {
         return empName;
@@ -36,5 +37,40 @@ public class Employe {
 
     public void setEmpAddress(String empAddress) {
         this.empAddress = empAddress;
+    }
+
+    public Date getEmpDoj() {
+        return empDoj;
+    }
+
+    public void setEmpDoj(Date empDoj) {
+        this.empDoj = empDoj;
+    }
+
+    public int getEmpAge() {
+        return empAge;
+    }
+
+    public void setEmpAge(int empAge) {
+        this.empAge = empAge;
+    }
+
+    public Address getEmpAddressObj() {
+        return empAddressObj;
+    }
+
+    public void setEmpAddressObj(Address empAddressObj) {
+        this.empAddressObj = empAddressObj;
+    }
+
+    @Override
+    public String toString() {
+        return "Employe{" +
+                "empId=" + empId +
+                ", empName='" + empName + '\'' +
+                ", empAddress='" + empAddress + '\'' +
+                ", empDoj=" + empDoj +
+                ", empAge=" + empAge +
+                '}';
     }
 }

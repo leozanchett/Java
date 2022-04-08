@@ -1,13 +1,17 @@
 package com.hibernate.hpower.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 public class Employe {
     @Id
     private Long empId;
+    @Column(name = "name")
     private String empName;
+    @Column(name = "address")
     private String empAddress;
 
     public long getEmpId() {

@@ -6,13 +6,11 @@ import java.util.Date;
 
 @Entity
 public class Employe implements Serializable {
-    @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int empId;
+    @EmbeddedId
+    private EmployeeId employeId;
     private String empName;
     private String empAddress;
-    @Id
-    private String department;
+
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date empDoj;
     @Transient
@@ -24,9 +22,6 @@ public class Employe implements Serializable {
     @AttributeOverride(name = "pin", column = @Column(name = "OFFICE_PIN"))
     private Address empAddressObj;
 
-    public void setEmpId(int empId) {
-        this.empId = empId;
-    }
 
     public void setEmpName(String empName) {
         this.empName = empName;
@@ -34,10 +29,6 @@ public class Employe implements Serializable {
 
     public void setEmpAddress(String empAddress) {
         this.empAddress = empAddress;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
     }
 
     public void setEmpDoj(Date empDoj) {
@@ -48,13 +39,17 @@ public class Employe implements Serializable {
         this.empAddressObj = empAddressObj;
     }
 
+    public void setEmployeId(EmployeeId employeId) {
+        this.employeId = employeId;
+    }
+
     @Override
     public String toString() {
         return "Employe{" +
-                "empId=" + empId +
+                "employeId=" + employeId.getEmpId() +
+                ", employeIdDepartment='" + employeId.getDepartment() + '\'' +
                 ", empName='" + empName + '\'' +
                 ", empAddress='" + empAddress + '\'' +
-                ", department='" + department + '\'' +
                 ", empDoj=" + empDoj +
                 ", empAge=" + empAge +
                 ", empAddressObj=" + empAddressObj +

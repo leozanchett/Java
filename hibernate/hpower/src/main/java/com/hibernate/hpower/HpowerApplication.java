@@ -1,9 +1,8 @@
 package com.hibernate.hpower;
 
 import com.hibernate.hpower.models.Address;
-import com.hibernate.hpower.models.Employe;
+import com.hibernate.hpower.models.Employe_old ;
 import com.hibernate.hpower.models.EmployeeId;
-import org.hibernate.LockMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -38,7 +37,7 @@ public class HpowerApplication {
         entityId2.setDepartment("Marketing");
 
         // Employee entity = new Employee();
-        Employe e1 = new Employe();
+        Employe_old e1 = new Employe_old();
         e1.setEmployeId(entityId);
         e1.setEmpName("Raj");
         e1.setEmpAddress("Hyderabad");
@@ -46,7 +45,7 @@ public class HpowerApplication {
         e1.setEmpDoj(new Date());
         e1.setEmpAddressObj(address);
 
-        Employe e2 = new Employe();
+        Employe_old e2 = new Employe_old();
         e2.setEmployeId(entityId2);
         e2.setEmpName("Maj");
         e2.setEmpAddress("Chandigarh");
@@ -67,11 +66,11 @@ public class HpowerApplication {
         } finally {
             session.close();
         }
-        Employe temp1, temp2;
+        Employe_old temp1, temp2;
         session = sessionFactory.openSession();
         session.beginTransaction();
-        temp1 = session.get(Employe.class, entityId);
-        temp2 = session.get(Employe.class, entityId2);
+        temp1 = session.get(Employe_old.class, entityId);
+        temp2 = session.get(Employe_old.class, entityId2);
         System.out.println(temp1.toString());
         System.out.println(temp2.toString());
     }

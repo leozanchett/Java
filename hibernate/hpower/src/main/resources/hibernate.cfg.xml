@@ -26,6 +26,6 @@
         <property name="hbm2ddl.auto">create</property>-->
         <property name="hbm2ddl.auto">create</property>
         <!-- Mapping models -->
-        <mapping class="com.hibernate.hpower.models.Employe" />
+        <mapping class="com.hibernate.hpower.models.Employee" />
     </session-factory>
 </hibernate-configuration>

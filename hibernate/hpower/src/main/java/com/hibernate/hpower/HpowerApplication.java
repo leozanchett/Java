@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class HpowerApplication {
 
 
@@ -26,8 +26,11 @@ public class HpowerApplication {
         try {
             session.save(e1);
             session.getTransaction().commit();
-        }catch (Exception e){
+        } catch (Exception e) {
+            session.getTransaction().rollback();
             e.printStackTrace();
+        } finally {
+            session.close();
         }
     }
 

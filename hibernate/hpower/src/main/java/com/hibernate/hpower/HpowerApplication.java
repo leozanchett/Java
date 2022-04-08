@@ -29,16 +29,30 @@ public class HpowerApplication {
 
         // Employee entity = new Employee();
         Employe e1 = new Employe();
+        e1.setEmpId(1);
         e1.setEmpName("Raj");
         e1.setEmpAddress("Hyderabad");
         // set date with local format
         e1.setEmpDoj(new Date());
         e1.setEmpAddressObj(address);
+        e1.setDepartment("Maerketing");
+
+        Employe e2 = new Employe();
+        e2.setEmpId(1);
+        e2.setEmpName("Maj");
+        e2.setEmpAddress("Chandigarh");
+        // set date with local format
+        e2.setEmpDoj(new Date());
+        e2.setEmpAddressObj(address);
+        e2.setDepartment("Other Department");
+
+
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         try {
             session.save(e1);
+            session.save(e2);
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
@@ -47,10 +61,10 @@ public class HpowerApplication {
             session.close();
         }
         Employe temp;
-        session = sessionFactory.openSession();
+       /* session = sessionFactory.openSession();
         session.beginTransaction();
-        temp = session.get(Employe.class, 1);
-        System.out.println(temp.toString());
+        temp = session.get(Employe.class,  (int) 1, LockMode.PESSIMISTIC_WRITE);
+        System.out.println(temp.toString()); */
     }
 
 }

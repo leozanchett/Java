@@ -1,17 +1,18 @@
 package com.hibernate.hpower.models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-public class Employe {
+public class Employe implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int empId;
-    @Column(name = "name")
     private String empName;
-    @Column(name = "address")
     private String empAddress;
+    @Id
+    private String department;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date empDoj;
     @Transient
@@ -23,40 +24,24 @@ public class Employe {
     @AttributeOverride(name = "pin", column = @Column(name = "OFFICE_PIN"))
     private Address empAddressObj;
 
-    public String getEmpName() {
-        return empName;
+    public void setEmpId(int empId) {
+        this.empId = empId;
     }
 
     public void setEmpName(String empName) {
         this.empName = empName;
     }
 
-    public String getEmpAddress() {
-        return empAddress;
-    }
-
     public void setEmpAddress(String empAddress) {
         this.empAddress = empAddress;
     }
 
-    public Date getEmpDoj() {
-        return empDoj;
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
     public void setEmpDoj(Date empDoj) {
         this.empDoj = empDoj;
-    }
-
-    public int getEmpAge() {
-        return empAge;
-    }
-
-    public void setEmpAge(int empAge) {
-        this.empAge = empAge;
-    }
-
-    public Address getEmpAddressObj() {
-        return empAddressObj;
     }
 
     public void setEmpAddressObj(Address empAddressObj) {
@@ -69,8 +54,10 @@ public class Employe {
                 "empId=" + empId +
                 ", empName='" + empName + '\'' +
                 ", empAddress='" + empAddress + '\'' +
+                ", department='" + department + '\'' +
                 ", empDoj=" + empDoj +
                 ", empAge=" + empAge +
+                ", empAddressObj=" + empAddressObj +
                 '}';
     }
 }

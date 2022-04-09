@@ -11,7 +11,7 @@ public class Employee_one_to_one {
     private String empName;
     private String empAddress;
     @OneToOne
-    private Flat flat;
+    private Flat_many_to_one flatManytoone;
 
     public void setEmpId(int empId) {
         this.empId = empId;
@@ -21,12 +21,12 @@ public class Employee_one_to_one {
         this.empAddress = empAddress;
     }
 
-    public void setFlat(Flat flat) {
-        this.flat = flat;
+    public void setFlat(Flat_many_to_one flatManytoone) {
+        this.flatManytoone = flatManytoone;
     }
 
-    public Flat getFlat() {
-        return flat;
+    public Flat_many_to_one getFlat() {
+        return flatManytoone;
     }
 
     public void setEmpName(String empName) {

@@ -1,9 +1,6 @@
 package com.hibernate.hpower.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
@@ -12,7 +9,7 @@ public class Employee {
     private int empId;
     private String empName;
     private String empAddress;
-    @OneToMany(mappedBy = "employee") // evitar criar uma terceira tabela associativa
+    @ManyToMany(mappedBy= "employeeCollection")
     private Collection<Flat> flatCollection;
 
     public void setEmpId(int empId) {

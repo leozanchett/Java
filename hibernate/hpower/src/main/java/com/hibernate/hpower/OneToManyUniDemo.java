@@ -1,8 +1,7 @@
 package com.hibernate.hpower;
 
-import com.hibernate.hpower.models.Address;
-import com.hibernate.hpower.models.Employee;
-import com.hibernate.hpower.models.Flat;
+import com.hibernate.hpower.models.Employee_one_to_many;
+import com.hibernate.hpower.models.Flat_many_to_one;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -12,31 +11,31 @@ import java.util.Collection;
 
 public class OneToManyUniDemo {
     public static void main(String[] args) {
-        Flat flat = new Flat();
-        flat.setFlatId(1);
-        flat.setFlatNo("A-1");
-        flat.setApartmentName("Anantdhara");
-        flat.setNoOfBedrooms(1);
+        Flat_many_to_one flatManytoone = new Flat_many_to_one();
+        flatManytoone.setFlatId(1);
+        flatManytoone.setFlatNo("A-1");
+        flatManytoone.setApartmentName("Anantdhara");
+        flatManytoone.setNoOfBedrooms(1);
 
-        Flat flat2 = new Flat();
-        flat2.setFlatId(2);
-        flat2.setFlatNo("A-2");
-        flat2.setApartmentName("Anantdhara");
-        flat2.setNoOfBedrooms(2);
+        Flat_many_to_one flatManytoone2 = new Flat_many_to_one();
+        flatManytoone2.setFlatId(2);
+        flatManytoone2.setFlatNo("A-2");
+        flatManytoone2.setApartmentName("Anantdhara");
+        flatManytoone2.setNoOfBedrooms(2);
 
-        Flat flat3 = new Flat();
-        flat3.setFlatId(3);
-        flat3.setFlatNo("A-3");
-        flat3.setApartmentName("Anantdhara");
-        flat3.setNoOfBedrooms(3);
+        Flat_many_to_one flatManytoone3 = new Flat_many_to_one();
+        flatManytoone3.setFlatId(3);
+        flatManytoone3.setFlatNo("A-3");
+        flatManytoone3.setApartmentName("Anantdhara");
+        flatManytoone3.setNoOfBedrooms(3);
 
-        Collection<Flat> flats = Arrays.asList(flat, flat2, flat3);
+        Collection<Flat_many_to_one> flatManytoones = Arrays.asList(flatManytoone, flatManytoone2, flatManytoone3);
 
-        Employee employee = new Employee();
+        Employee_one_to_many employee = new Employee_one_to_many();
         employee.setEmpId(1);
         employee.setEmpName("Raj");
         employee.setEmpAddress("Pune");
-        employee.setFlatCollection(flats);
+        employee.setFlatCollection(flatManytoones);
         
 
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
@@ -44,11 +43,11 @@ public class OneToManyUniDemo {
         session.beginTransaction();
         try {
             session.save(employee);
-            session.save(flat);
-            session.save(flat2);
-            session.save(flat3);
+            session.save(flatManytoone);
+            session.save(flatManytoone2);
+            session.save(flatManytoone3);
             session.getTransaction().commit();
-            Employee employeRequest = session.get(Employee.class, 1);
+            Employee_one_to_many employeRequest = session.get(Employee_one_to_many.class, 1);
             System.out.println(employeRequest.getFlatCollection().toString());
         } catch (Exception e) {
             e.printStackTrace();

@@ -9,7 +9,7 @@ public class Employee {
     private int empId;
     private String empName;
     private String empAddress;
-    @ManyToMany(mappedBy= "employeeCollection")
+    @ManyToMany(mappedBy= "employeeCollection", cascade = CascadeType.PERSIST)
     private Collection<Flat> flatCollection;
 
     public void setEmpId(int empId) {

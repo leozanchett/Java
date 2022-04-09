@@ -55,12 +55,9 @@ public class ManyToManyBiDemo {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         try {
-            session.save(employee);
-            session.save(employee1);
-            session.save(employee2);
-            session.save(flat);
-            session.save(flat1);
-            session.save(flat2);
+            session.persist(employee);
+            session.persist(employee1);
+            session.persist(employee2);
             session.getTransaction().commit();
             Employee employeRequest = session.get(Employee.class, 6);
             System.out.println(employeRequest.getFlatCollection().toString());

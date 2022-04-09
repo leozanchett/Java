@@ -1,4 +1,4 @@
-package com.hibernate.hpower.models;
+package com.hibernate.hpower.essentialExamples.models;
 
 import javax.persistence.*;
 import java.util.Collection;

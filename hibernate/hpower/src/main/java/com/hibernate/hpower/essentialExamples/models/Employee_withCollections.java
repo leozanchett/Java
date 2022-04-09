@@ -1,4 +1,4 @@
-package com.hibernate.hpower.models;
+package com.hibernate.hpower.essentialExamples.models;
 
 import org.hibernate.annotations.CollectionId;
 import org.hibernate.annotations.GenericGenerator;

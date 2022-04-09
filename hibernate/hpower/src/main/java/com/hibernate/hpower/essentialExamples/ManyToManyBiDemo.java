@@ -1,7 +1,7 @@
-package com.hibernate.hpower;
+package com.hibernate.hpower.essentialExamples;
 
-import com.hibernate.hpower.models.Employee;
-import com.hibernate.hpower.models.Flat;
+import com.hibernate.hpower.essentialExamples.models.Employee;
+import com.hibernate.hpower.essentialExamples.models.Flat;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

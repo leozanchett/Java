@@ -1,18 +1,21 @@
-package com.hibernate.hpower.models;
+package com.hibernate.hpower.essentialExamples.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
-public class Flat_many_to_one {
+public class Flat {
     @Id
     private int flatId;
     private String apartmentName;
     private String flatNo;
     private int noOfBedrooms;
-    @ManyToOne
-    private Employee_one_to_many employee;
+    @ManyToMany//(mappedBy = "flatCollection")
+    private Collection<Employee> employeeCollection;
+
+    public void setEmployeeCollection(Collection<Employee> employeeCollection) {
+        this.employeeCollection = employeeCollection;
+    }
 
     public void setFlatId(int flatId) {
         this.flatId = flatId;
@@ -28,10 +31,6 @@ public class Flat_many_to_one {
 
     public void setNoOfBedrooms(int noOfBedrooms) {
         this.noOfBedrooms = noOfBedrooms;
-    }
-
-    public void setEmployee(Employee_one_to_many employee) {
-        this.employee = employee;
     }
 
     @Override

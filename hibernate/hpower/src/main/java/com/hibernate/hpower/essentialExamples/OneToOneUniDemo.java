@@ -1,7 +1,7 @@
-package com.hibernate.hpower;
+package com.hibernate.hpower.essentialExamples;
 
-import com.hibernate.hpower.models.Employee_one_to_one;
-import com.hibernate.hpower.models.Flat_many_to_one;
+import com.hibernate.hpower.essentialExamples.models.Employee_one_to_one;
+import com.hibernate.hpower.essentialExamples.models.Flat_many_to_one;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

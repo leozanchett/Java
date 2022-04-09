@@ -50,7 +50,7 @@ public class OneToManyBiDemo {
             session.save(flat2);
             session.save(flat3);
             session.getTransaction().commit();
-            Employee employeRequest = session.get(Employee.class, 1);
+            Employee employeRequest = session.get(Employee.class, 6);
             System.out.println(employeRequest.getFlatCollection().toString());
         } catch (Exception e) {
             e.printStackTrace();

@@ -2,6 +2,7 @@ package com.hibernate.hpower.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Flat {
@@ -10,6 +11,8 @@ public class Flat {
     private String apartmentName;
     private String flatNo;
     private int noOfBedrooms;
+    @ManyToOne
+    private Employee employee;
 
     public void setFlatId(int flatId) {
         this.flatId = flatId;
@@ -25,6 +28,10 @@ public class Flat {
 
     public void setNoOfBedrooms(int noOfBedrooms) {
         this.noOfBedrooms = noOfBedrooms;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
     @Override

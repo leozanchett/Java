@@ -12,7 +12,7 @@ public class Employee {
     private int empId;
     private String empName;
     private String empAddress;
-    @OneToMany
+    @OneToMany(mappedBy = "employee") // evitar criar uma terceira tabela associativa
     private Collection<Flat> flatCollection;
 
     public void setEmpId(int empId) {

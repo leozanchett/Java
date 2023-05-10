@@ -1,3 +1,5 @@
 
 JDBCRules/db.properties
 SpringBoot/plants.zip
+*.pem
+*.txt
